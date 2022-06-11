@@ -27,6 +27,14 @@ public class Bishop extends Piece {
         }
     }
 
+    public PieceStat getPieceStat() {
+        return pieceStat;
+    }
+
+    public void setPieceStat(PieceStat pieceStat) {
+        Bishop.pieceStat = pieceStat;
+    }
+
     @Override
     public Bishop addPiece(Piece piece, int destinationCoordinate) {
         return new Bishop(destinationCoordinate, piece.getPieceColor(), PieceStat.notUpdated);
@@ -48,7 +56,7 @@ public class Bishop extends Piece {
     @Override
     public List<Move> calculateLegalMoves(final Board board) {
         List<Move> legalMoves = new ArrayList<>();
-        if (this.getPieceStat() == PieceStat.notUpdated) {
+        if (pieceStat == PieceStat.notUpdated) {
             for (final int destinationVector : candidateMoveVector) {
                 int position = this.piecePosition;
                 int destinationCoordinate;
